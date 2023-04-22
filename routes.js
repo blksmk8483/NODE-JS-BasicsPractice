@@ -21,9 +21,9 @@ const requestHandler = (req, res) => {
         req.on('data', (chunk) => {
             body.push(chunk);
         });
-        return req.on('end', () => {
-            const parseBody = Buffer.concat(body).toString();
-            const message = parseBody.split('=')[1];
+        req.on('end', () => {
+            const parsedBody = Buffer.concat(body).toString();
+            console.log(parsedBody);
         });
         res.statusCode = 302;
         res.setHeader('Location', '/');
